@@ -1,3 +1,3 @@
-resource "aws_internet_gateway" "my-igw-php" {
-  vpc_id = aws_vpc.vpc-php.id
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
 }

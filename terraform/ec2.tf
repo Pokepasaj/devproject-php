@@ -9,24 +9,14 @@ data "aws_ami" "amzn-linux-2023-ami" {
 }
 
 resource "aws_network_interface" "main" {
-  subnet_id   = aws_subnet.my-subnet-php.id
+  subnet_id   = aws_subnet.main.id
   private_ips = ["10.0.1.5"]
-
-  tags = {
-    Name = "primary_network_interface"
-  }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "main" {
   ami = data.aws_ami.amzn-linux-2023-ami.id
   instance_type = "t2.micro"
+  associate_public_ip_address = true
+  
 
-   network_interface {
-    network_interface_id = aws_network_interface.main.id
-    device_index         = 0
-  }
-
-  tags = {
-    Name = "terraform-ec2"
-  }
 }
