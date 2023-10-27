@@ -17,6 +17,4 @@ resource "aws_instance" "main" {
   ami = data.aws_ami.amzn-linux-2023-ami.id
   instance_type = "t2.micro"
   associate_public_ip_address = true
-  
-
 }
